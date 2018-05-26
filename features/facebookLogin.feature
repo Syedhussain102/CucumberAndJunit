@@ -1,12 +1,14 @@
+Feature: Test Facebook smoke scenario data driven
 
-Feature: Facebook login feature
+  @SmokeTest1
+  Scenario Outline: Test login with valid credentials
+    Given Open Chrome and start application
+    When I enter valid "<username>"
+    And valid "<password>"
+    Then user should be able to login successfully
 
-
-  Scenario: providing correct username and password user will be allowed to login.
-    Given Facebook website
-    When I provide email
-    And password 
-    Then i get to see the user home page
-    And quite the browser 
-
-  
+    Examples: 
+      | username              | password |
+      | testuser13@gmail.com  | abcd1234 |
+      | testuser131@gmail.com | abcd2345 |
+      | testuser132@gmail.com | abcd3456 |
